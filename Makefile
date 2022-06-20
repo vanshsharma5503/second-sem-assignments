@@ -16,7 +16,10 @@ DEPS = $(SRCS:.c=.d)
 include $(DEPS)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main
+	$(CC) $(CFLAGS) $(OBJS) -o "$@"
+
+main-debug: $(OBJS)
+	$(CC) $(CFLAGS) -O0 $(OBJS) -o "$@"
 
 clean:
-	rm -f $(OBJS) $(DEPS) main
+	rm -f $(OBJS) $(DEPS) main main-debug
